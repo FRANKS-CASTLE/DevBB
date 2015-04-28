@@ -24,11 +24,8 @@ THE SOFTWARE.
 -->
 <html>
     <head>
-        <link href="css/pace.css" rel = "stylesheet">
-        <script src="js/pace.min.js"></script>
-
         <meta charset="UTF-8">
-        <title>DevBB - Forum</title>
+        <title>DevBB - Administration</title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
@@ -58,8 +55,8 @@ THE SOFTWARE.
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gast <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" id = "loginButton">Login</a></li>
-                                <li><a href="#" id = "registerButton">Registrieren</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Registrieren</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -72,7 +69,7 @@ THE SOFTWARE.
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div class = "container" id = "content">
+        <div class = "container">
             <!-- CONTENT -->
         </div>
         <footer class = "footer">
@@ -80,45 +77,5 @@ THE SOFTWARE.
                 &copy; 2015 CreepPlaysYT | Powered by Bootstrap including Glyphicons
             </div>
         </footer>
-
-        <!-- Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="loginModalLabel">Einloggen</h4>
-                    </div>
-                    <form method = "post" action="php/login.php">
-                        <div class="modal-body" id = "loginBody">
-                            Content
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="registerModalLabel">Registrieren</h4>
-                    </div>
-                    <form method = "post" action="php/register.php">
-                        <div class="modal-body" id = "registerBody">
-                            Content
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                            <button type="submit" class="btn btn-primary">Registrieren</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </body>
 </html>

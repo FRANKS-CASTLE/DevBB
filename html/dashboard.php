@@ -25,15 +25,9 @@ THE SOFTWARE.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>DevBB - Forum</title>
+        <title></title>
     </head>
     <body>
-        <form method="post" action = "php/login.php">
-            <input type = "text" placeholder="Benutzername" name = "user"
-                   class="form-control">
-            <br>
-            <input type = "password" placeholder="Passwort" name = "pass"
-                   class="form-control">
-        </form>
+        Dashboard
     </body>
 </html>

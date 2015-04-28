@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* 
  * The MIT License
  *
  * Copyright 2015 CreepPlaysYT.
@@ -24,33 +24,17 @@
  * THE SOFTWARE.
  */
 
-require_once 'db.php';
+include_once '../config/config.inc.php';
+$mysqli = new mysqli(dbhost, username, password, database);
 
-if (isset($_POST["email"]) && isset($_POST["user"]) && isset($_POST["pass"])) {
-    $userexists = false;
-    if ($s = $mysqli->prepare("SELECT username FROM users WHERE username = ?")) {
-        $stmt->bind_param("s", $_POST["user"]);
-        $stmt->execute();
-        $stmt->bind_result($user);
-        $stmt->fetch();
-
-        if ($user != "")
-            $userexists = true;
-    }
-
-    if (!$userexists) {
-        if ($stmt = $mysqli->prepare("INSERT INTO users (username, email, password, online)"
-                . "VALUES (?, ?, ?, 0)")) {
-            $stmt->bind_param("sss", $_POST["user"], hash("sha256", $_POST["email"]), hash("sha256", $_POST["pass"]));
-            $stmt->execute();
-            echo "Datensätze verändert: " . $stmt->affected_rows;
-            $stmt->close();
-        }
-    } else {
-        echo "Der Benutzer existiert schon";
-    }
-} else {
-    echo "Unerlaubter Zugriff oder Wert nicht eingetragen!";
+if($mysqli->connect_error) {
+    echo "Fehler bei der Verbindung: " . mysqli_connect_error();
+    exit();
 }
 
-$mysqli->close();
+$mysqli->query("CREATE TABLE IF NOT EXISTS `users` (`username` varchar(30) NOT NULL,`email` tinytext NOT NULL,".
+"  `password` tinytext NOT NULL, `online` int(11) NOT NULL" .
+") ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+
+//$mysqli->close();
+

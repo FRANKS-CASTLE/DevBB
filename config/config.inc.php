@@ -25,10 +25,10 @@
  */
 
 // Database host
-define("dbhost", "localhost");
+define("dbhost", "192.168.0.5");
 // MySQL username
-define("username", "USERNAME");
+define("username", "devbb");
 // MySQL password
-define("password", "PASSWORD");
+define("password", "devbb");
 // MySQL database name
-define("database", "DATABASE");
+define("database", "devbb");

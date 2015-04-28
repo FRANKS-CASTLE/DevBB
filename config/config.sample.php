@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* 
  * The MIT License
  *
  * Copyright 2015 CreepPlaysYT.
@@ -24,33 +24,11 @@
  * THE SOFTWARE.
  */
 
-require_once 'db.php';
-
-if (isset($_POST["email"]) && isset($_POST["user"]) && isset($_POST["pass"])) {
-    $userexists = false;
-    if ($s = $mysqli->prepare("SELECT username FROM users WHERE username = ?")) {
-        $stmt->bind_param("s", $_POST["user"]);
-        $stmt->execute();
-        $stmt->bind_result($user);
-        $stmt->fetch();
-
-        if ($user != "")
-            $userexists = true;
-    }
-
-    if (!$userexists) {
-        if ($stmt = $mysqli->prepare("INSERT INTO users (username, email, password, online)"
-                . "VALUES (?, ?, ?, 0)")) {
-            $stmt->bind_param("sss", $_POST["user"], hash("sha256", $_POST["email"]), hash("sha256", $_POST["pass"]));
-            $stmt->execute();
-            echo "Datensätze verändert: " . $stmt->affected_rows;
-            $stmt->close();
-        }
-    } else {
-        echo "Der Benutzer existiert schon";
-    }
-} else {
-    echo "Unerlaubter Zugriff oder Wert nicht eingetragen!";
-}
-
-$mysqli->close();
+// Database host
+define("dbhost", "localhost");
+// MySQL username
+define("username", "USERNAME");
+// MySQL password
+define("password", "PASSWORD");
+// MySQL database name
+define("database", "DATABASE");
