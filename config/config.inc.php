@@ -24,6 +24,8 @@
  * THE SOFTWARE.
  */
 
+// LOKALER DATENBANK-LOGIN DES ENTWICKLERS, NICHT NUTZBAR
+
 // Database host
 define("dbhost", "192.168.0.5");
 // MySQL username
