@@ -27,9 +27,15 @@ $(document).ready(function() {
    $("#loginBody").load("html/login.html");
    $("#registerBody").load("html/register.html");
    $("#loginButton").click(function() {
-      $('#loginModal').modal('show'); 
+      $('#loginModal').modal('show');
    });
    $("#registerButton").click(function() {
       $('#registerModal').modal('show'); 
+   });
+   $("#dashboardButton").click(function() {
+       $("#content").load("html/dashboard.php");
+   });
+   $("#forumButton").click(function() {
+       $("#content").load("html/forum.php");
    });
 });

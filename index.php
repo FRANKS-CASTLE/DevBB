@@ -51,8 +51,8 @@ THE SOFTWARE.
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Forum</a></li>
+                        <li class="active"><a href="#" id = "dashboardButton">Dashboard <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#" id = "forumButton">Forum</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

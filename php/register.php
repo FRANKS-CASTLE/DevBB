@@ -29,22 +29,25 @@ require_once 'db.php';
 if (isset($_POST["email"]) && isset($_POST["user"]) && isset($_POST["pass"])) {
     $userexists = false;
     if ($s = $mysqli->prepare("SELECT username FROM users WHERE username = ?")) {
-        $stmt->bind_param("s", $_POST["user"]);
-        $stmt->execute();
-        $stmt->bind_result($user);
-        $stmt->fetch();
-
-        if ($user != "")
+        $s->bind_param("s", $_POST["user"]);
+        $s->execute();
+        $s->store_result();
+        echo $s->num_rows;
+        if($s->num_rows > 0) {
             $userexists = true;
+        }
+        $s->close();
     }
-
-    if (!$userexists) {
+    
+    if ($userexists == false) {
         if ($stmt = $mysqli->prepare("INSERT INTO users (username, email, password, online)"
                 . "VALUES (?, ?, ?, 0)")) {
             $stmt->bind_param("sss", $_POST["user"], hash("sha256", $_POST["email"]), hash("sha256", $_POST["pass"]));
             $stmt->execute();
             echo "Datensätze verändert: " . $stmt->affected_rows;
             $stmt->close();
+        } else {
+            echo $mysqli->error;
         }
     } else {
         echo "Der Benutzer existiert schon";

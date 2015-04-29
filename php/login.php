@@ -24,3 +24,37 @@
  * THE SOFTWARE.
  */
 
+require_once 'db.php';
+
+if (isset($_POST["user"]) && isset($_POST["pass"])) {
+    $userexists = false;
+    if ($s = $mysqli->prepare("SELECT username FROM users WHERE username = ?")) {
+        $s->bind_param("s", $_POST["user"]);
+        $s->execute();
+        $s->store_result();
+        echo $s->num_rows;
+        if($s->num_rows > 0) {
+            $userexists = true;
+        }
+        $s->close();
+    }
+    
+    if($userexists) {
+        $password = hash("sha256", $_POST["pass"]);
+        
+        if($stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?")) {
+            $stmt->bind_param("s", $_POST["user"]);
+            $stmt->execute();
+            $stmt->bind_result($pass);
+            
+            $stmt->fetch();
+            if($pass == $password) {
+                echo "OK";
+            } else {
+                echo "FALSE";
+            }
+        }
+    } else {
+        echo "Already exists";
+    }
+}
