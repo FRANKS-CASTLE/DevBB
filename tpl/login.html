@@ -1,4 +1,4 @@
-<!DOCTYPE >
+<!DOCTYPE html>
 <!--
 The MIT License
 
@@ -28,13 +28,12 @@ THE SOFTWARE.
         <title>DevBB - Forum</title>
     </head>
     <body>
-        <input type = "email" placeholder="Email-Adresse" name = "email"
-               class="form-control">
-        <br>
-        <input type = "text" placeholder="Benutzername" name = "user"
-               class="form-control">
-        <br>
-        <input type = "password" placeholder="Passwort" name = "pass"
-               class="form-control">
+        <form method="post" action = "php/login.php">
+            <input type = "text" placeholder="Benutzername" name = "user"
+                   class="form-control">
+            <br>
+            <input type = "password" placeholder="Passwort" name = "pass"
+                   class="form-control">
+        </form>
     </body>
 </html>

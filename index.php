@@ -1,3 +1,6 @@
+<?php
+  include_once 'php/session.php';
+?>
 <!DOCTYPE html>
 <!--
 The MIT License
@@ -56,10 +59,17 @@ THE SOFTWARE.
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gast <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $username; ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" id = "loginButton">Login</a></li>
-                                <li><a href="#" id = "registerButton">Registrieren</a></li>
+                                <?php
+                                  if($username == "Gast") {
+                                      include_once 'tpl/guestdd.php';
+                                  } else {
+                                      include_once 'tpl/registeredd.php';
+                                  }
+                                ?>
+                                <!--<li><a href="#" id = "loginButton">Login</a></li>
+                                <li><a href="#" id = "registerButton">Registrieren</a></li>-->
                             </ul>
                         </li>
                     </ul>

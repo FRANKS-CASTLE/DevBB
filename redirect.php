@@ -1,3 +1,4 @@
+<?php
 /*
  * The MIT License
  *
@@ -22,20 +23,25 @@
  * THE SOFTWARE.
  */
 
-$(document).ready(function() {
-   $("#content").load("tpl/dashboard.php");
-   $("#loginBody").load("tpl/login.html");
-   $("#registerBody").load("tpl/register.html");
-   $("#loginButton").click(function() {
-      $('#loginModal').modal('show');
-   });
-   $("#registerButton").click(function() {
-      $('#registerModal').modal('show');
-   });
-   $("#dashboardButton").click(function() {
-       $("#content").load("tpl/dashboard.php");
-   });
-   $("#forumButton").click(function() {
-       $("#content").load("tpl/forum.php");
-   });
-});
+include_once 'tpl/bootstrap.php';
+if(isset($_GET["reason"])) {
+  $link = "";
+  $host = $_SERVER['HTTP_HOST'];
+  $basedir = dirname($_SERVER['SCRIPT_NAME']);
+
+  echo "<meta http-equiv = 'refresh' content=\"3;http://{$host}{$basedir}\">";
+
+  $reason = $_GET["reason"];
+  switch($reason) {
+    case "loginok":
+      echo "<div class='alert alert-success'>Login erfolgreich</div>";
+      break;
+    case "loginfail":
+      echo "<div class='alert alert-danger'>Login fehlgeschlagen</div>";
+      break;
+    case "loggedout":
+      echo "<div class='alert alert-info'>Ausgeloggt</div>";
+      break;
+  }
+}
+?>

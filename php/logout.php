@@ -1,3 +1,4 @@
+<?php
 /*
  * The MIT License
  *
@@ -22,20 +23,11 @@
  * THE SOFTWARE.
  */
 
-$(document).ready(function() {
-   $("#content").load("tpl/dashboard.php");
-   $("#loginBody").load("tpl/login.html");
-   $("#registerBody").load("tpl/register.html");
-   $("#loginButton").click(function() {
-      $('#loginModal').modal('show');
-   });
-   $("#registerButton").click(function() {
-      $('#registerModal').modal('show');
-   });
-   $("#dashboardButton").click(function() {
-       $("#content").load("tpl/dashboard.php");
-   });
-   $("#forumButton").click(function() {
-       $("#content").load("tpl/forum.php");
-   });
-});
+session_start();
+$_SESSION = array();
+if(isset($_COOKIE[session_name()])) {
+  setcookie(session_name(), "", time()-42000, "/");
+}
+session_destroy();
+header("Location: ../redirect.php?reason=loggedout");
+?>

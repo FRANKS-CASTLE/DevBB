@@ -71,6 +71,7 @@ THE SOFTWARE.
         </nav>
         <div class = "container">
             <!-- CONTENT -->
+            TODO: Kategorien und Foren verwalten
         </div>
         <footer class = "footer">
             <div class = "container">

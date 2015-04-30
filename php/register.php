@@ -38,7 +38,7 @@ if (isset($_POST["email"]) && isset($_POST["user"]) && isset($_POST["pass"])) {
         }
         $s->close();
     }
-    
+
     if ($userexists == false) {
         if ($stmt = $mysqli->prepare("INSERT INTO users (username, email, password, online)"
                 . "VALUES (?, ?, ?, 0)")) {

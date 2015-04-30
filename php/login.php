@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-/* 
+/*
  * The MIT License
  *
  * Copyright 2015 CreepPlaysYT.
@@ -26,6 +27,15 @@
 
 require_once 'db.php';
 
+// TODO Zum laufen bringen
+function setOnline($user) {
+    if($stmt = $mysqli->prepare("UPDATE users SET online = 1 WHERE username = ?")) {
+        $stmt->bind_param("s", $user);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
 if (isset($_POST["user"]) && isset($_POST["pass"])) {
     $userexists = false;
     if ($s = $mysqli->prepare("SELECT username FROM users WHERE username = ?")) {
@@ -38,23 +48,27 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
         }
         $s->close();
     }
-    
+
     if($userexists) {
         $password = hash("sha256", $_POST["pass"]);
-        
+
         if($stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?")) {
             $stmt->bind_param("s", $_POST["user"]);
             $stmt->execute();
             $stmt->bind_result($pass);
-            
+
             $stmt->fetch();
             if($pass == $password) {
-                echo "OK";
+                $_SESSION["username"] = $_POST["user"];
+                header("Location: ../redirect.php?reason=loginok");
+                setOnline($_POST["user"]);
             } else {
-                echo "FALSE";
+                header("Location: ../redirect.php?reason=loginfail");
             }
         }
     } else {
         echo "Already exists";
     }
 }
+
+$mysqli->close();

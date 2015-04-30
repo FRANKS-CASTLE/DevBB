@@ -1,4 +1,3 @@
-<!DOCTYPE >
 <!--
 The MIT License
 
@@ -22,19 +21,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>DevBB - Forum</title>
-    </head>
-    <body>
-        <input type = "email" placeholder="Email-Adresse" name = "email"
-               class="form-control">
-        <br>
-        <input type = "text" placeholder="Benutzername" name = "user"
-               class="form-control">
-        <br>
-        <input type = "password" placeholder="Passwort" name = "pass"
-               class="form-control">
-    </body>
-</html>
+<li><a href="#" id = "loginButton">Login</a></li>
+<li><a href="#" id = "registerButton">Registrieren</a></li>

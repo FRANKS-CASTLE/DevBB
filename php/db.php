@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * The MIT License
  *
  * Copyright 2015 CreepPlaysYT.
@@ -37,4 +37,3 @@ $mysqli->query("CREATE TABLE IF NOT EXISTS `users` (`username` varchar(30) NOT N
 ") ENGINE=InnoDB DEFAULT CHARSET=latin1;");
 
 //$mysqli->close();
-
